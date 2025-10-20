@@ -8,7 +8,13 @@ dotenv.config(); // Load .env file
 const bookroute  = require('./routes/userRouter')
 const app = express();
 app.use(express.json()); // For parsing JSON
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://fullstack-frontend.vercel.app", // <-- your exact Vercel domain
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // optional (only if you use cookies or auth)
+  })
+);
 
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -22,6 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/books',bookroute)
+
 
 
 const PORT = process.env.PORT;
