@@ -10,7 +10,10 @@ const app = express();
 app.use(express.json()); // For parsing JSON
 app.use(
   cors({
-    origin: "https://fullstack-frontend.vercel.app", // <-- your exact Vercel domain
+  
+  origin: ["https://bookstore-frontend-mocha.vercel.app"],
+
+ // <-- your exact Vercel domain
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // optional (only if you use cookies or auth)
   })
